@@ -1,11 +1,11 @@
-## text-based-dungeon-game
-# A turn-based dungeon game where players fight dungeon dwellers to gain experience, level up, and get stronger
+# text-based-dungeon-game
+## A turn-based dungeon game where players fight dungeon dwellers to gain experience, level up, and get stronger
 
-# Idea Notes (for myself)
+## Idea Notes (for myself)
 - Allow small passive healing for the player (maybe the enemies too) after every turn (just like how stamina regeneration)
 - 
 
-# Technical Notes (for myself, again)
+## Technical Notes (for myself, again)
 - Uses inheritance (almost everywhere, actually, which is not great), abstraction, encapsulation, and polymorphism
 - Uses the principles above, but still obviously rough around the edges...
 - Instead of making a subclass for everything, make a subclass when only the behavior differs, not the data
