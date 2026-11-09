@@ -3,7 +3,6 @@
 
 ## Idea Notes (for myself)
 - Allow small passive healing for the player (maybe the enemies too) after every turn (just like how stamina regeneration)
-- 
 
 ## Technical Notes (for myself, again)
 - Uses inheritance (almost everywhere, actually, which is not great), abstraction, encapsulation, and polymorphism
