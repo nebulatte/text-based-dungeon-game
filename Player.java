@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Player extends Entity {
 
     private int killCount;
@@ -34,11 +36,26 @@ public class Player extends Entity {
         this.currentLevel = 1;
         this.expToNextLevel = 100;
 
-        skills.add(new BasicAttack());
-        skills.add(new HeavyAttack());
-        skills.add(new UltimateAttack());
-        skills.add(new PartialRecovery());
-        skills.add(new FullRecovery());
+        skills.add(new Skill("Basic Attack",
+            String.format("Deals damage for 80%% of attack [%d] to the opponent for no stamina.", (int)(getAttackStat() * 0.8f)),
+            0,
+            List.of(new DamageEffect(0.8f))));
+        skills.add(new Skill("Vampiric Strike", 
+            String.format("Consumes 20%% current stamina to deal damage for 200%% of attack [%d]. Heals the caster for 20%% of the damage dealt.", (int)(getAttackStat() * 0.2f)), 
+            (int)(getCurrentStamina() * 0.2f), 
+            List.of(new DamageEffect(2.0f), new LifestealEffect(0.2f))));
+        skills.add(new Skill("Execution", 
+            String.format("Deals damage for 280%% of attack [%d] plus 80%% of the target's lost health for 20 stamina.", (int)(getAttackStat() * 2.8f)), 
+            20, 
+            List.of(new DamageEffect(2.8f), new LostHpDamageEffect(0.8f))));
+        skills.add(new Skill("Fiery Slash", 
+            String.format("Deals damage for 560%% attack [%d] and ignores the target's defense for 50 stamina.", (int)(getAttackStat() * 5.6f)) , 
+            50, 
+            List.of(new TrueDamageEffect(5.6f))));
+        skills.add(new Skill("Full Recovery",
+            "Fully restores health for 40 stamina.",
+            40,
+            List.of(new HealEffect(1.0f))));
 
         this.oldHealthStat = getHealthStat();
         this.oldAttackStat = getAttackStat();
@@ -54,8 +71,8 @@ public class Player extends Entity {
     public int getCurrentLevel() { return currentLevel; }
     public int getExpToNextLevel() { return expToNextLevel; }
 
-    public void addExp(int exp) { totalExp += exp; }
-    public void addKillCount() { killCount++; }
+    public void gainExp(int exp) { totalExp += exp; }
+    public void gainKill() { killCount++; }
     public String expGainMessage(Enemy enemy) {
         return getName() + " gained " + enemy.getExpReward() + " EXP from defeating " + enemy.getName() + "!";
     }

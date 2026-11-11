@@ -11,7 +11,7 @@ public class Main {
             System.out.println("Welcome to the Dungeon.");    
 
             while(running) {
-                Display.printMainMenu();
+                Display.mainMenu();
                 mainMenuChoice = Utils.readInt(scanner, "Enter your choice: ", 0, 1);
                 System.out.println();
                 switch(mainMenuChoice) {
@@ -22,7 +22,7 @@ public class Main {
                 System.out.println();
             }
 
-            Display.printFramedMessage("Thank you for playing!");
+            Display.framedMessage("Thank you for playing!");
 
         }
 
@@ -30,16 +30,16 @@ public class Main {
 
     private static void gameSetUp(Scanner scanner) {
 
-        Display.printFramedMessage("YOUR COURAGE IS ADMIRABLE", "Only the most valiant of knights would enter the dungeon");
+        Display.framedMessage("YOUR COURAGE IS ADMIRABLE", "Only the most valiant of knights would enter the dungeon");
         String playerName = "Knight";
         System.out.println();
 
-        Display.printDifficulties();
+        Display.difficulties();
         int difficultyChoice = Utils.readInt(scanner, "Choose your desired difficulty: ", 1, Difficulty.values().length);
         Difficulty difficulty = Difficulty.getDifficultyLevelFromInput(difficultyChoice);
         Scene scene = Difficulty.getSceneDifficulty(difficulty, playerName);
         System.out.println();
-        Display.printLinedMessage("May you prevail victorious.");
+        Display.linedMessage("May you prevail victorious.");
         System.out.println();
         
         scene.playScene(scanner);

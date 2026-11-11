@@ -27,16 +27,16 @@ public enum Difficulty {
     public static Scene getSceneDifficulty(Difficulty difficulty, String playerName) {
         switch(difficulty) {
             case EASY -> {
-                return new Scene(playerName, 150, 15, 200, 20, 30, 10);
+                return new Scene(playerName, 150, 20, 200, 20, 80, 10);
             }
             case NORMAL -> {
-                return new Scene(playerName, 100, 10, 100, 10, 20, 20);
+                return new Scene(playerName, 100, 15, 100, 10, 50, 20);
             }
             case HARD -> {
-                return new Scene(playerName, 100, 5, 80, 5, 15, 30);
+                return new Scene(playerName, 80, 10, 80, 5, 40, 30);
             }
             case ENDLESS -> {
-                return new Scene(playerName, 100, 10, 100, 10, 200, 500);  
+                return new Scene(playerName, 80, 10, 80, 5, 30, Integer.MAX_VALUE);  
             }
         }
         // Defaults to NORMAL
