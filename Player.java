@@ -41,13 +41,13 @@ public class Player extends Entity {
             0,
             List.of(new DamageEffect(0.8f))));
         skills.add(new Skill("Vampiric Strike", 
-            String.format("Consumes 20%% current stamina to deal damage for 200%% of attack [%d]. Heals the caster for 20%% of the damage dealt.", (int)(getAttackStat() * 0.2f)), 
-            (int)(getCurrentStamina() * 0.2f), 
+            String.format("Consumes 30 stamina to deal damage for 200%% of attack [%d]. Heals the caster for 30%% of the damage dealt.", (int)(getAttackStat() * 2.0f)), 
+            30, 
             List.of(new DamageEffect(2.0f), new LifestealEffect(0.2f))));
         skills.add(new Skill("Execution", 
             String.format("Deals damage for 280%% of attack [%d] plus 80%% of the target's lost health for 20 stamina.", (int)(getAttackStat() * 2.8f)), 
             20, 
-            List.of(new DamageEffect(2.8f), new LostHpDamageEffect(0.8f))));
+            List.of(new LostHpDamageEffect(0.8f), new DamageEffect(2.8f))));
         skills.add(new Skill("Fiery Slash", 
             String.format("Deals damage for 560%% attack [%d] and ignores the target's defense for 50 stamina.", (int)(getAttackStat() * 5.6f)) , 
             50, 

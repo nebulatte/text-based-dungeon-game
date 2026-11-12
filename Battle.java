@@ -12,6 +12,7 @@ public class Battle {
     private final Enemy enemy;
 
     private final int EXIT_CHOICE_INDEX = -1;
+    private final float PASSIVE_HEALING_RATE = 0.1f;
 
     private boolean conquering = true;
 
@@ -34,10 +35,12 @@ public class Battle {
             if(isPlayerTurn) {
                 playerAction(scanner);
                 player.regenerateStamina(0);
+                player.heal((int)(player.getHealthStat() * PASSIVE_HEALING_RATE));
                 isPlayerTurn = false;
             } else {
                 enemyAction(enemy);
                 enemy.regenerateStamina(0);
+                enemy.heal((int)(enemy.getHealthStat() * PASSIVE_HEALING_RATE));
                 isPlayerTurn = true;
             }
 

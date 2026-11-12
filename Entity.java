@@ -62,10 +62,12 @@ public abstract class Entity {
     }
 
     protected void regenerateStamina() {
+        if(getCurrentStamina() + getStaminaRegen() > getStaminaStat()) { setCurrentStamina(getStaminaStat()); return; }
         setCurrentStamina(getCurrentStamina() + getStaminaRegen());
     }
 
     protected void regenerateStamina(int extraStamina) {
+        if(getCurrentStamina() + getStaminaRegen() + extraStamina > getStaminaStat()) { setCurrentStamina(getStaminaStat()); return; }
         setCurrentStamina(getCurrentStamina() + getStaminaRegen() + extraStamina);
     }
     

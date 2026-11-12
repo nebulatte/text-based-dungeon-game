@@ -39,11 +39,8 @@ public class Scene {
 
             Enemy enemy;
 
-            if(player.getKillCount() % killsUntilBoss != 0 || player.getKillCount() == 0) {
-                enemy = EnemyType.getRandomEnemy();
-            } else {
-                enemy = EnemyType.getRandomBoss();
-            }
+            if(player.getKillCount() % killsUntilBoss != 0 || player.getKillCount() == 0) { enemy = EnemyType.getRandomEnemy(); } 
+            else { enemy = EnemyType.getRandomBoss(); }
             
             Battle.BattleResult result = new Battle(player, enemy).run(scanner);
             if(result != Battle.BattleResult.PLAYER_WON) { break; }

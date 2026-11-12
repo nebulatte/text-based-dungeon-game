@@ -104,6 +104,7 @@ class LostHpDamageEffect implements Effect {
     @Override
     public void apply(Entity caster, Entity target, Skill.Context context) {
         int lostHp = target.getHealthStat() - target.getCurrentHealth();
+        context.addLostHp(lostHp);
         int extraDamage = (int)(lostHp * multiplier);
         int damageDealt = target.takeDamage(extraDamage);
         context.addDamage(damageDealt);
@@ -111,9 +112,9 @@ class LostHpDamageEffect implements Effect {
 
     @Override
     public String getCombatMessage(Entity caster, Entity target, Skill.Context context) {
-        int lostHp = target.getHealthStat() - target.getCurrentHealth();
+        int lostHp = context.getLostHp();
         int extraDamage = (int)(lostHp * multiplier);
-        return String.format("%s dealt additional %d damage to the %s based on their missing %d health!%n", caster.getName(), extraDamage, target.getName(), lostHp);
+        return String.format("%s dealt %d damage to the %s based on their missing %d health!%n", caster.getName(), extraDamage, target.getName(), context.getLostHp());
     }
 
 }

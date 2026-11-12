@@ -6,12 +6,16 @@ public class Skill {
     
         private int damageDealt;
         private int healthRestored;
+        private int lostHp;
 
         public void addDamage(int amount) { damageDealt += amount; }
         public int getDamageDealt() { return damageDealt; }
 
         public void addHealthRestored(int amount) { healthRestored += amount; }
         public int getHealthRestored() { return healthRestored; }
+
+        public void addLostHp(int amount) { lostHp += amount; }
+        public int getLostHp() { return lostHp; }
 
     }
 
